@@ -1,116 +1,64 @@
-/* Importation d'une police dynamique */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:ital,wght@1,900&display=swap');
-
+/* --- STYLE PERSONA 3 RELOAD --- */
 :root {
     --p3-blue: #0093FF;
-    --p3-dark-blue: #001B35;
-    --p3-bg-dark: #020810;
-    --p3-accent: #FFFFFF;
-    --p3-shadow: rgba(0, 147, 255, 0.4);
+    --p3-dark: #001B35;
 }
 
 body {
-    background-color: var(--p3-bg-dark);
-    background-image: radial-gradient(circle at 50% 50%, #0a1a2f 0%, #020810 100%);
+    background: #020810;
     color: white;
     font-family: 'Oswald', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
 }
 
-h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-style: italic;
-    font-size: 3rem;
-    letter-spacing: -2px;
-    color: var(--p3-accent);
-    text-shadow: 4px 4px 0px var(--p3-blue);
-    margin-top: 20px;
-}
-
-#main {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 20px;
-}
-
-/* Grille des Personnages */
-#grille-persos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+.question-bloc {
     background: rgba(0, 147, 255, 0.1);
-    padding: 20px;
-    border-left: 5px solid var(--p3-blue);
-    transform: skewX(-2deg); /* Inclinaison typique P3 */
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 4px solid var(--p3-blue);
 }
 
-.perso-card {
-    background: white;
-    border: 2px solid var(--p3-blue);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    width: 120px;
-    height: 160px;
-}
-
-.perso-card:hover {
-    transform: scale(1.05) rotate(-2deg);
-    box-shadow: 0 0 20px var(--p3-blue);
-    z-index: 10;
-}
-
-.perso-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(20%) contrast(110%);
-}
-
-/* Menu de gauche (Questions) */
-#col-left {
-    background: var(--p3-dark-blue);
-    border: 1px solid var(--p3-blue);
-    padding: 20px;
-    transform: skewX(1deg);
-    box-shadow: -10px 0px 0px var(--p3-blue);
-}
-
-.panel-label {
-    background: var(--p3-blue);
-    color: white;
-    padding: 5px 15px;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 15px;
-    transform: skewX(-10deg);
-}
-
-/* Boutons OUI/NON style P3R */
 button {
     background: white;
     border: none;
-    color: var(--p3-dark-blue);
-    padding: 8px 20px;
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
+    padding: 5px 15px;
     cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.3s;
-    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); /* Forme géométrique */
+    font-weight: bold;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    transition: 0.2s;
+}
+
+/* C'EST CETTE PARTIE QUI FAIT QUE LE CLIC SE VOIT */
+button.is-selected {
+    background: var(--p3-blue) !important;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--p3-blue);
+}
+
+.perso-card {
+    display: inline-block;
+    width: 100px;
     margin: 5px;
+    text-align: center;
+    font-size: 10px;
+    filter: grayscale(100%) opacity(0.5);
 }
 
-button:hover {
+.perso-card img { width: 100%; border: 1px solid var(--p3-blue); }
+
+/* Quand un personnage correspond */
+.perso-card.winner {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.2);
+    border: 2px solid white;
+    box-shadow: 0 0 20px var(--p3-blue);
+}
+
+#message {
+    margin-top: 20px;
+    padding: 15px;
     background: var(--p3-blue);
-    color: white;
-    padding-left: 30px;
-}
-
-button.non {
-    background: #555;
-    color: white;
+    font-weight: bold;
+    text-align: center;
 }
